@@ -138,7 +138,7 @@ export const projects: Project[] = [
       'A clean digital campus workspace for attendance, grades, schedules, announcements, and daily academic coordination, built for RUPP students and faculty.',
     stack: ['Next.js', 'TypeScript', 'Tailwind CSS'],
     demoUrl: 'https://class-connect-pro-rupp.vercel.app',
-    repoUrl: 'https://github.com/NuonVannsonleng/class-connect-pro-rupp',
+    repoUrl: 'https://github.com/NuonVannsonleng/rupper-connect',
   },
   {
     title: 'Project Title Two',
