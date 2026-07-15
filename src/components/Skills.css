@@ -1,0 +1,201 @@
+/* Marquee strip — outlined ghost type drifting sideways */
+.skills-marquee {
+  overflow: hidden;
+  margin-bottom: 3.5rem;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+
+.skills-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 26s linear infinite;
+}
+
+.skills-marquee:hover .skills-marquee-track {
+  animation-play-state: paused;
+}
+
+.skills-marquee-list {
+  display: flex;
+  list-style: none;
+  gap: 2.5rem;
+  padding-right: 2.5rem;
+}
+
+.skills-marquee-list li {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  white-space: nowrap;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(22, 58, 92, 0.28);
+  transition: color var(--transition-base);
+}
+
+.skills-marquee-list li:hover {
+  color: var(--text-primary);
+  -webkit-text-stroke: 0;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skills-marquee {
+    display: none;
+  }
+}
+
+/* ========================================
+   Tech stack grid — logo tiles
+   ======================================== */
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1.25rem;
+  list-style: none;
+  perspective: 1000px;
+}
+
+.tech-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2.1rem 1rem 1.6rem;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(22, 58, 92, 0.16);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 16px rgba(22, 58, 92, 0.07);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  overflow: hidden;
+  cursor: default;
+
+  /* 3D flip-in entrance, staggered by inline transition-delay */
+  opacity: 0;
+  transform: rotateX(38deg) translateY(34px) scale(0.85);
+  filter: blur(6px);
+  transition:
+    opacity 0.55s ease-out,
+    transform 0.55s cubic-bezier(0.34, 1.4, 0.5, 1),
+    filter 0.55s ease-out,
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.reveal.is-visible .tech-card {
+  opacity: 1;
+  transform: rotateX(0) translateY(0) scale(1);
+  filter: blur(0);
+}
+
+/* Hover: lift + glow, halo lights up, logo pops */
+.reveal.is-visible .tech-card:hover {
+  transition-delay: 0ms;
+  transform: translateY(-8px);
+  border-color: var(--glass-border-hover);
+  box-shadow:
+    0 16px 40px rgba(22, 58, 92, 0.2),
+    0 0 26px var(--glow-indigo);
+}
+
+/* Radial halo behind the logo — kept faintly visible at rest so the grid
+   doesn't disappear against the light background until hovered */
+.tech-card-halo {
+  position: absolute;
+  top: 12%;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(244, 180, 0, 0.32), rgba(22, 58, 92, 0.1) 55%, transparent 70%);
+  filter: blur(14px);
+  opacity: 0.45;
+  transform: scale(0.82);
+  transition: opacity var(--transition-base), transform var(--transition-base);
+}
+
+.tech-card:hover .tech-card-halo {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.tech-card-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 52px;
+  transition: transform 0.35s cubic-bezier(0.34, 1.8, 0.4, 1);
+  filter: drop-shadow(0 4px 14px rgba(22, 58, 92, 0.22));
+}
+
+.tech-card:hover .tech-card-icon {
+  transform: scale(1.18) rotate(-5deg) translateY(-3px);
+}
+
+.tech-card-name {
+  position: relative;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: color var(--transition-fast);
+}
+
+.tech-card:hover .tech-card-name {
+  color: var(--text-primary);
+}
+
+/* Gradient shimmer sweeping across the card on hover */
+.tech-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 42%, rgba(244, 180, 0, 0.22) 50%, transparent 58%);
+  transform: translateX(-130%);
+  transition: transform 0.7s ease;
+  pointer-events: none;
+}
+
+.tech-card:hover::after {
+  transform: translateX(130%);
+}
+
+/* Fallback dot for skills without a mapped logo */
+.skill-dot {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--gradient);
+  box-shadow: 0 0 14px var(--glow-indigo);
+}
+
+@media (max-width: 640px) {
+  .tech-grid {
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 0.875rem;
+  }
+
+  .tech-card {
+    padding: 1.6rem 0.75rem 1.25rem;
+  }
+
+  .tech-card-icon svg {
+    width: 38px;
+    height: 38px;
+  }
+
+  .tech-card-name {
+    font-size: 0.85rem;
+  }
+}
