@@ -26,7 +26,7 @@ export function Loader({ name, onDone }: LoaderProps) {
   return (
     <div className={`loader ${leaving ? 'loader-leaving' : ''}`} role="status" aria-label="Loading portfolio">
       <p className="loader-kicker">Welcome to</p>
-      <p className="loader-name gradient-text">{name}</p>
+      <p className="loader-name gradient-text">{name} Portfolio Website</p>
       <div className="loader-bar" aria-hidden="true">
         <span />
       </div>
