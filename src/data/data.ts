@@ -140,7 +140,7 @@ export const projects: Project[] = [
     imageUrl: '/rupper-connect.png',
     imageAlt: 'RUPPER Connect university learning portal homepage',
     demoUrl: 'https://class-connect-pro-rupp.vercel.app',
-    repoUrl: 'https://github.com/NuonVannsonleng/rupper-connect',
+    repoNote: 'Repo is private — public version coming soon',
   },
   {
     title: 'Project Title Two',

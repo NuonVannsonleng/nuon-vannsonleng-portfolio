@@ -76,6 +76,12 @@ function ProjectCard({ project }: { project: Project }) {
             GitHub
           </a>
         )}
+        {!project.repoUrl && project.repoNote && (
+          <span className="project-repo-note" role="note">
+            <Icon name="lock" size={13} />
+            {project.repoNote}
+          </span>
+        )}
       </div>
     </article>
   );

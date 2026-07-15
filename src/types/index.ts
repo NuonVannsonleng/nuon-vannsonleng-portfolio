@@ -7,6 +7,7 @@ export type IconName =
   | 'award'
   | 'stack'
   | 'file'
+  | 'lock'
   | 'github'
   | 'linkedin'
   | 'facebook'
@@ -52,6 +53,8 @@ export interface Project {
   imageAlt?: string;
   demoUrl?: string;
   repoUrl?: string;
+  /** Shown instead of the GitHub button when the repo isn't public yet */
+  repoNote?: string;
 }
 
 export interface SocialLink {
