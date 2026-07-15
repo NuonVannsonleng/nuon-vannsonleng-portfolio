@@ -24,6 +24,30 @@ interface HeroProps {
   cvUrl: string;
 }
 
+const CV_FILENAME = 'NuonVannsonleng CV.pdf';
+
+/**
+ * Fetches the CV and saves it via a blob URL so the browser always uses
+ * our filename — a plain anchor `download` attribute can get overridden
+ * by the host's response headers on some browsers.
+ */
+async function downloadCv(cvUrl: string) {
+  try {
+    const response = await fetch(cvUrl);
+    const blob = await response.blob();
+    const blobUrl = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = blobUrl;
+    link.download = CV_FILENAME;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(blobUrl);
+  } catch {
+    window.open(cvUrl, '_blank');
+  }
+}
+
 function ProfilePhoto({ name, photoUrl }: { name: string; photoUrl?: string }) {
   const { ref, onPointerMove, onPointerLeave } = useTilt<HTMLDivElement>(10);
 
@@ -104,7 +128,14 @@ export function Hero({ greeting, typingPhrases, name, photoUrl, socialLinks, sta
           </p>
 
           <div className="hero-buttons fade-in fade-in-delay-3">
-            <a href={cvUrl} download="NuonVannsonleng CV.pdf" className="btn">
+            <a
+              href={cvUrl}
+              className="btn"
+              onClick={(e) => {
+                e.preventDefault();
+                void downloadCv(cvUrl);
+              }}
+            >
               <Icon name="file" size={16} />
               Download CV
             </a>
