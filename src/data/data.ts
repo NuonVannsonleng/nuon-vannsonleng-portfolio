@@ -133,12 +133,12 @@ export const timelineEntries: TimelineEntry[] = [
 
 export const projects: Project[] = [
   {
-    title: 'Project Title One',
+    title: 'RUPPER Connect — University Learning Portal',
     description:
-      'Placeholder description of the project — what it does, the problem it solves, and what you built. Two to three sentences reads well here.',
-    stack: ['React', 'TypeScript', 'Node.js'],
-    demoUrl: '#',
-    repoUrl: '#',
+      'A clean digital campus workspace for attendance, grades, schedules, announcements, and daily academic coordination, built for RUPP students and faculty.',
+    stack: ['Next.js', 'TypeScript', 'Tailwind CSS'],
+    demoUrl: 'https://class-connect-pro-rupp.vercel.app',
+    repoUrl: 'https://github.com/NuonVannsonleng/class-connect-pro-rupp',
   },
   {
     title: 'Project Title Two',
