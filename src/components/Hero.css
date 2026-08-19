@@ -150,7 +150,7 @@
    ======================================== */
 
 /* Outer wrapper owns size, perspective and the gentle float loop, and
-   stacks the blurred aura behind the card */
+   stacks the soft bloom behind the card */
 .hero-card-float {
   --card-bg: #0d1f34;
   --card-bg-soft: #16304c;
@@ -178,34 +178,25 @@
   }
 }
 
-/* Slow colour bloom that brightens and speeds up on hover */
+/* Soft static bloom behind the card — no rotation, so there is no
+   moving gradient seam to shimmer against the card edge */
 .hero-card-aura {
   position: absolute;
-  inset: -13%;
+  inset: -10%;
   border-radius: 44px;
-  background: conic-gradient(
-    from 0deg,
-    var(--indigo),
-    var(--violet),
-    var(--card-accent),
-    transparent 62%,
-    var(--indigo)
+  background: radial-gradient(
+    62% 58% at 50% 45%,
+    rgba(47, 102, 144, 0.5),
+    rgba(125, 211, 232, 0.28) 55%,
+    transparent 78%
   );
-  filter: blur(34px);
-  opacity: 0.4;
-  animation: aura-spin 16s linear infinite;
+  filter: blur(38px);
+  opacity: 0.55;
   transition: opacity 0.55s var(--ease-smooth);
 }
 
-@keyframes aura-spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .hero-card-float:hover .hero-card-aura {
-  opacity: 0.85;
-  animation-duration: 7s;
+  opacity: 0.95;
 }
 
 /* The card itself owns the tilt (via .tilt in global.css) plus the hover
@@ -529,8 +520,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-card-float,
-  .hero-card-aura {
+  .hero-card-float {
     animation: none;
   }
 

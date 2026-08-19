@@ -67,7 +67,7 @@ function ProfileCard({
 
   return (
     <div className="hero-card-float fade-in fade-in-delay-2">
-      {/* Slow-spinning colour bloom behind the card */}
+      {/* Soft bloom behind the card */}
       <span className="hero-card-aura" aria-hidden="true" />
 
       <div
