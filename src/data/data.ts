@@ -180,8 +180,8 @@ export const certificates: Certificate[] = [
 export const socialLinks: SocialLink[] = [
   { label: 'GitHub', url: 'https://github.com/NuonVannsonleng', icon: 'github' },
   { label: 'LinkedIn', url: 'https://linkedin.com/in/nuon-vannsonleng-708006422', icon: 'linkedin' },
-  { label: 'Facebook', url: 'https://www.facebook.com/NuonVannsonlengL/', icon: 'facebook' },
-  { label: 'Instagram', url: 'https://www.instagram.com/nuonvannsonleng/', icon: 'instagram' },
-  { label: 'Telegram', url: 'https://t.me/NuonVannsonleng', icon: 'telegram' },
+  { label: 'Facebook', url: 'https://www.facebook.com/mqchavrr/', icon: 'facebook' },
+  { label: 'Instagram', url: 'https://www.instagram.com/mqchavrr/', icon: 'instagram' },
+  { label: 'Telegram', url: 'https://t.me/mqchavrr', icon: 'telegram' },
   { label: 'Email', url: `mailto:${siteMeta.email}`, icon: 'mail' },
 ];
