@@ -13,6 +13,8 @@ import { Footer } from './components/Footer';
 import {
   aboutIntro,
   certificates,
+  heroRole,
+  heroTags,
   highlights,
   navLinks,
   projects,
@@ -65,7 +67,9 @@ export default function App() {
           greeting={siteMeta.heroGreeting}
           typingPhrases={typingPhrases}
           name={siteMeta.name}
+          role={heroRole}
           photoUrl={siteMeta.profileImage}
+          tags={heroTags}
           socialLinks={socialLinks}
           stats={heroStats}
           cvUrl={siteMeta.cvUrl}

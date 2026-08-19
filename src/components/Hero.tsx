@@ -1,6 +1,6 @@
 import { useTypingEffect } from '../hooks/useTypingEffect';
 import { useTilt } from '../hooks/useTilt';
-import type { IconName, SocialLink } from '../types';
+import type { HeroTag, IconName, SocialLink } from '../types';
 import { Icon } from './icons';
 import './Hero.css';
 
@@ -16,8 +16,12 @@ interface HeroProps {
   typingPhrases: string[];
   /** Real name, used for the photo's alt text */
   name: string;
+  /** Short line above the name on the profile card */
+  role: string;
   /** Path to the profile photo; empty string shows the placeholder */
   photoUrl?: string;
+  /** Fact chips in the strip under the photo */
+  tags: HeroTag[];
   socialLinks: SocialLink[];
   stats: HeroStat[];
   /** Path to the downloadable CV/résumé file */
@@ -48,37 +52,69 @@ async function downloadCv(cvUrl: string) {
   }
 }
 
-function ProfilePhoto({ name, photoUrl }: { name: string; photoUrl?: string }) {
-  const { ref, onPointerMove, onPointerLeave } = useTilt<HTMLDivElement>(10);
+function ProfileCard({
+  name,
+  role,
+  photoUrl,
+  tags,
+}: {
+  name: string;
+  role: string;
+  photoUrl?: string;
+  tags: HeroTag[];
+}) {
+  const { ref, onPointerMove, onPointerLeave } = useTilt<HTMLDivElement>(9);
 
   return (
-    <div className="hero-photo-float fade-in fade-in-delay-2">
+    <div className="hero-card-float fade-in fade-in-delay-2">
+      {/* Slow-spinning colour bloom behind the card */}
+      <span className="hero-card-aura" aria-hidden="true" />
+
       <div
         ref={ref}
-        className="hero-photo tilt"
+        className="hero-card tilt"
         onPointerMove={onPointerMove}
         onPointerLeave={onPointerLeave}
       >
-        {/* Rotating conic gradient ring */}
-        <span className="hero-photo-ring" aria-hidden="true" />
-        <div className="hero-photo-frame">
+        {/* Corner brackets that push outwards on hover */}
+        <span className="hero-card-corner hero-card-corner-tl" aria-hidden="true" />
+        <span className="hero-card-corner hero-card-corner-tr" aria-hidden="true" />
+        <span className="hero-card-corner hero-card-corner-bl" aria-hidden="true" />
+        <span className="hero-card-corner hero-card-corner-br" aria-hidden="true" />
+
+        <div className="hero-card-photo">
           {photoUrl ? (
             <img src={photoUrl} alt={`Portrait of ${name}`} />
           ) : (
-            <div className="hero-photo-placeholder" role="img" aria-label="Profile photo placeholder">
-              <Icon name="user" size={64} />
+            <div
+              className="hero-card-placeholder"
+              role="img"
+              aria-label="Profile photo placeholder"
+            >
+              <Icon name="user" size={56} />
               <span>Your photo here</span>
             </div>
           )}
+
+          <span className="hero-card-veil" aria-hidden="true" />
+          <span className="hero-card-sheen" aria-hidden="true" />
           <span className="tilt-glare" aria-hidden="true" />
+
+          <div className="hero-card-caption">
+            <p className="hero-card-eyebrow">{role}</p>
+            <p className="hero-card-name">{name}</p>
+            <span className="hero-card-underline" aria-hidden="true" />
+          </div>
         </div>
-        {/* Floating accent chips around the photo */}
-        <span className="hero-photo-chip hero-photo-chip-1" aria-hidden="true">
-          &lt;/&gt;
-        </span>
-        <span className="hero-photo-chip hero-photo-chip-2" aria-hidden="true">
-          ✦
-        </span>
+
+        <ul className="hero-card-tags">
+          {tags.map((tag) => (
+            <li key={tag.label} className="hero-card-tag">
+              <strong className="hero-card-tag-value">{tag.value}</strong>
+              <span className="hero-card-tag-label">{tag.label}</span>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );
@@ -104,7 +140,17 @@ function HeroStats({ stats }: { stats: HeroStat[] }) {
   );
 }
 
-export function Hero({ greeting, typingPhrases, name, photoUrl, socialLinks, stats, cvUrl }: HeroProps) {
+export function Hero({
+  greeting,
+  typingPhrases,
+  name,
+  role,
+  photoUrl,
+  tags,
+  socialLinks,
+  stats,
+  cvUrl,
+}: HeroProps) {
   const typedText = useTypingEffect(typingPhrases);
 
   return (
@@ -161,7 +207,7 @@ export function Hero({ greeting, typingPhrases, name, photoUrl, socialLinks, sta
           </ul>
         </div>
 
-        <ProfilePhoto name={name} photoUrl={photoUrl} />
+        <ProfileCard name={name} role={role} photoUrl={photoUrl} tags={tags} />
       </div>
 
       <HeroStats stats={stats} />

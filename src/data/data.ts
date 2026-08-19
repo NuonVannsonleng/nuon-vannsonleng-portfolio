@@ -1,5 +1,6 @@
 import type {
   Certificate,
+  HeroTag,
   Highlight,
   NavLink,
   Project,
@@ -31,6 +32,18 @@ export const siteMeta = {
    */
   cvUrl: '/cv.pdf',
 };
+
+/**
+ * Hero profile card: the eyebrow line over the photo and the three
+ * fact chips under it.
+ */
+export const heroRole = 'ITE Student · Web Developer';
+
+export const heroTags: HeroTag[] = [
+  { value: 'ITE', label: 'Student' },
+  { value: 'Web', label: 'Developer' },
+  { value: 'UI', label: 'Focused' },
+];
 
 export const navLinks: NavLink[] = [
   { label: 'About', href: '#about' },

@@ -71,3 +71,11 @@ export interface Certificate {
   /** Omit if there's no public credential page yet */
   credentialUrl?: string;
 }
+
+/** Small fact chip in the hero profile card's tag strip */
+export interface HeroTag {
+  /** Big accent word, e.g. "ITE" */
+  value: string;
+  /** Small caption under it, e.g. "Student" */
+  label: string;
+}
