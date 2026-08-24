@@ -24,7 +24,6 @@
 }
 
 .project-media {
-  position: relative;
   margin-bottom: 1.25rem;
   border-radius: var(--radius-md);
   overflow: hidden;
@@ -36,26 +35,24 @@
   transform: translateZ(24px); /* pops toward the viewer while tilting */
 }
 
-/* Progress pill over the top-right of the preview */
+/* Progress pill sitting just above the action buttons, on their metrics */
 .project-status {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  z-index: 1;
+  align-self: flex-start;
   display: inline-flex;
   align-items: center;
-  gap: 0.42rem;
-  padding: 5px 12px;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+  padding: 7px 16px;
   font-family: var(--font-display);
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.04em;
-  color: #fff;
-  background: rgba(6, 18, 31, 0.72);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  letter-spacing: 0.01em;
+  color: var(--text-primary);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
   border-radius: var(--radius-pill);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .project-status-dot {

@@ -43,12 +43,6 @@ function ProjectCard({ project }: { project: Project }) {
       <span className="tilt-glare" aria-hidden="true" />
       <div className="project-media">
         <ProjectMedia project={project} />
-        {project.status && (
-          <span className="project-status">
-            <span className="project-status-dot" aria-hidden="true" />
-            {project.status}
-          </span>
-        )}
       </div>
       <h3>{project.title}</h3>
       <p className="project-description">{project.description}</p>
@@ -57,6 +51,12 @@ function ProjectCard({ project }: { project: Project }) {
           <li key={tech}>{tech}</li>
         ))}
       </ul>
+      {project.status && (
+        <p className="project-status">
+          <span className="project-status-dot" aria-hidden="true" />
+          {project.status}
+        </p>
+      )}
       <div className="project-links">
         {project.demoUrl && (
           <a
