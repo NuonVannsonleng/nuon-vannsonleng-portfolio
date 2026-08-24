@@ -58,6 +58,8 @@ export interface Project {
   title: string;
   description: string;
   stack: string[];
+  /** Progress pill on the card, e.g. 'In development' */
+  status?: string;
   /** Omit to render the built-in placeholder preview */
   imageUrl?: string;
   imageAlt?: string;

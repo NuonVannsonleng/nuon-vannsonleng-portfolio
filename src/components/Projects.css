@@ -24,6 +24,7 @@
 }
 
 .project-media {
+  position: relative;
   margin-bottom: 1.25rem;
   border-radius: var(--radius-md);
   overflow: hidden;
@@ -33,6 +34,49 @@
   aspect-ratio: 2.2 / 1;
   background: var(--placeholder-grad);
   transform: translateZ(24px); /* pops toward the viewer while tilting */
+}
+
+/* Progress pill over the top-right of the preview */
+.project-status {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  padding: 5px 12px;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #fff;
+  background: rgba(6, 18, 31, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: var(--radius-pill);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.project-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--yellow);
+  box-shadow: 0 0 8px var(--glow-yellow);
+  animation: status-pulse 2.2s ease-in-out infinite;
+}
+
+@keyframes status-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.75);
+  }
 }
 
 .project-media img {

@@ -154,8 +154,9 @@ export const projects: Project[] = [
   {
     title: 'RUPPER Connect — University Learning Portal',
     description:
-      'A clean digital campus workspace for attendance, grades, schedules, announcements, and daily academic coordination, built for RUPP students and faculty.',
-    stack: ['Next.js', 'TypeScript', 'Tailwind CSS'],
+      'A classroom management platform for RUPP with separate spaces for students and staff. Students get a dashboard, courses, assignments and quizzes, attendance, a gradebook and transcript, timetable and academic calendar, announcements and messaging; administrators get user management and course oversight on top. It also carries the unglamorous half — email and OAuth sign-in with password reset, role-guarded routes, global search, in-app document preview, avatar cropping and a light/dark theme.',
+    stack: ['React', 'TypeScript', 'Tailwind CSS', 'shadcn/ui'],
+    status: 'In development',
     imageUrl: '/rupper-connect.png',
     imageAlt: 'RUPPER Connect university learning portal homepage',
     demoUrl: 'https://class-connect-pro-rupp.vercel.app',
@@ -166,6 +167,7 @@ export const projects: Project[] = [
     description:
       'Paste a link to a publicly accessible video and ClipFlow returns the formats that are genuinely available for it — MP4 and WEBM for video, MP3, M4A, WAV and OPUS for audio — across a dozen platforms. Downloads need no account, files are swept away on a timer, and anything behind DRM, a login, or a paywall is refused outright rather than worked around.',
     stack: ['Next.js 15', 'TypeScript', 'Express', 'FFmpeg'],
+    status: 'In development',
     imageUrl: '/clipflow.png',
     imageAlt: 'ClipFlow downloader page with a pasted video link',
     demoUrl: 'https://clip-flow-swart.vercel.app',
@@ -176,6 +178,7 @@ export const projects: Project[] = [
     description:
       'A file conversion app for documents, images, audio, video and archives: upload a file, pick a target format, download the result. The format picker is generated from the server\'s conversion registry filtered by the engines actually installed, so every option on screen is one the backend can really perform — the UI never offers a dead end.',
     stack: ['React', 'TypeScript', 'Express', 'FFmpeg'],
+    status: 'In development',
     imageUrl: '/fileflow.png',
     imageAlt: 'FileFlow Converter upload screen with format options',
     demoUrl: 'https://fileflow-converter.onrender.com',
@@ -186,6 +189,7 @@ export const projects: Project[] = [
     description:
       'A real-time, Kahoot-style quiz game. The host opens a room and shows a join code, players join with a nickname, and everyone answers against a synced timer while scores update live. Client and server share one typed WebSocket event contract, so a changed payload is a compile error on both sides instead of a runtime surprise.',
     stack: ['React', 'TypeScript', 'Socket.IO', 'Express'],
+    status: 'In development',
     imageUrl: '/ryzzquizz.png',
     imageAlt: 'RyzzQuizz lobby showing the room join code',
     demoUrl: 'https://ryzzquizz.onrender.com',
@@ -196,6 +200,7 @@ export const projects: Project[] = [
     description:
       'A quiet, cinematic single-page experience about waiting for someone: a monochrome moonlit palette, canvas rain and drifting stars, and sections for letters, memories, a diary, a mood tracker and a confession wall. What you write persists in local storage, and every animation stands down when the visitor prefers reduced motion.',
     stack: ['React', 'Framer Motion', 'Tailwind CSS', 'Vite'],
+    status: 'In development',
     imageUrl: '/still-here.png',
     imageAlt: 'Still Here (For You) landing screen at night',
     demoUrl: 'https://still-here-for-you.vercel.app',
