@@ -203,28 +203,25 @@ export const projects: Project[] = [
   },
 ];
 
-/*
- * Certificate photos live in `public/` too. Titles, issuers and the
- * descriptions below are still placeholders.
- */
+/* Certificate photos live in `public/` alongside the project thumbnails. */
 export const certificates: Certificate[] = [
   {
-    title: 'Certificate Title One',
-    issuer: 'Issuing Organization',
-    date: '2025',
+    title: 'Angkor Sangkranta 2025 — Volunteer',
+    issuer: 'Union of Youth Federations of Cambodia',
+    date: 'April 2025',
     description:
-      'Description coming soon — what this certificate covers and the skills it validates.',
+      'Letter of appreciation for volunteering at Angkor Sangkranta 2025 in Siem Reap, held 14–16 April under the theme "Smiles Welcoming the Khmer New Year". The festival draws crowds from across the country for traditional games, music and Khmer culture, and volunteers keep the programme running on the ground. Signed by the President of the UYFC.',
     imageUrl: '/certificate-1.jpg',
-    imageAlt: 'First certificate',
+    imageAlt: 'Certificate of appreciation for volunteering at Angkor Sangkranta 2025',
   },
   {
-    title: 'Certificate Title Two',
-    issuer: 'Issuing Organization',
-    date: '2024',
+    title: 'RUPP Sangkranta 2025 — Volunteer',
+    issuer: 'Royal University of Phnom Penh · UYFC RUPP Branch',
+    date: 'April 2025',
     description:
-      'Description coming soon — what this certificate covers and the skills it validates.',
+      "Letter of appreciation for volunteering at Sangkranta at the Royal University of Phnom Penh on 5–6 April 2025 — my own university's Khmer New Year celebration, two days of traditional games, music and food for students and visitors. Signed by the Rector of RUPP.",
     imageUrl: '/certificate-2.jpg',
-    imageAlt: 'Second certificate',
+    imageAlt: 'RUPP certificate of appreciation for volunteering at Sangkranta 2025',
   },
 ];
 
