@@ -6,7 +6,7 @@
   height: 600px;
   z-index: 1;
   pointer-events: none;
-  background: radial-gradient(circle, rgba(244, 180, 0, 0.12), transparent 60%);
+  background: radial-gradient(circle, var(--cursor-glow), transparent 60%);
   will-change: transform;
 }
 

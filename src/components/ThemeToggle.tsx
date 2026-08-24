@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react';
 import type { IconName, ThemeMode } from '../types';
 import { Icon } from './icons';
 import './ThemeToggle.css';
@@ -21,7 +22,7 @@ export function ThemeToggle({ mode, onChange }: ThemeToggleProps) {
     <div className="theme-toggle" role="group" aria-label="Colour theme">
       <span
         className="theme-toggle-thumb"
-        style={{ transform: `translateX(${activeIndex * 100}%)` }}
+        style={{ '--thumb-index': activeIndex } as CSSProperties}
         aria-hidden="true"
       />
       {OPTIONS.map((option) => (

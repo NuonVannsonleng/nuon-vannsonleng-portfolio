@@ -1,8 +1,11 @@
 .theme-toggle {
+  --toggle-size: 30px;
+  --toggle-gap: 2px;
+
   position: relative;
   display: flex;
   align-items: center;
-  gap: 2px;
+  gap: var(--toggle-gap);
   padding: 3px;
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
@@ -18,13 +21,16 @@
   border-color: var(--glass-border-hover);
 }
 
-/* The pill that slides under the active option */
+/* The pill that slides under the active option. Its travel is one button
+   plus one gap per step — translating by its own width alone would leave
+   it 2px short at "dark" and 4px short at "system". */
 .theme-toggle-thumb {
   position: absolute;
   top: 3px;
   left: 3px;
-  width: 30px;
-  height: 30px;
+  width: var(--toggle-size);
+  height: var(--toggle-size);
+  transform: translateX(calc(var(--thumb-index, 0) * (var(--toggle-size) + var(--toggle-gap))));
   border-radius: 50%;
   background: var(--gradient);
   box-shadow: 0 4px 14px var(--glow-indigo);
@@ -37,8 +43,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 30px;
-  height: 30px;
+  width: var(--toggle-size);
+  height: var(--toggle-size);
   padding: 0;
   color: var(--text-muted);
   background: none;

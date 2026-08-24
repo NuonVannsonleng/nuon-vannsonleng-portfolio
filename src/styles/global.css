@@ -37,6 +37,8 @@
   --glow-yellow: rgba(244, 180, 0, 0.35);
   /* Text on top of the accent gradient */
   --on-accent: #ffffff;
+  --glare: rgba(14, 116, 144, 0.12);
+  --cursor-glow: rgba(244, 180, 0, 0.12);
 
   --header-bg: rgba(247, 245, 239, 0.78);
   --overlay-bg: rgba(247, 245, 239, 0.97);
@@ -80,6 +82,9 @@
   --glow-yellow: rgba(247, 194, 60, 0.4);
   /* The dark palette's accents are light, so text on them goes dark */
   --on-accent: #06121f;
+  /* Light glare and a cool cursor bloom, so both still show on dark */
+  --glare: rgba(190, 224, 245, 0.1);
+  --cursor-glow: rgba(125, 211, 232, 0.1);
 
   --header-bg: rgba(10, 23, 37, 0.8);
   --overlay-bg: rgba(10, 23, 37, 0.97);
@@ -253,7 +258,7 @@ main {
   opacity: 0;
   background: radial-gradient(
     420px circle at var(--mx, 50%) var(--my, 50%),
-    rgba(14, 116, 144, 0.12),
+    var(--glare),
     transparent 65%
   );
   transition: opacity var(--transition-base);
