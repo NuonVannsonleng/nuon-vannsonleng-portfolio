@@ -28,20 +28,23 @@
   border-radius: var(--radius-md);
   overflow: hidden;
   border: 1px solid var(--glass-border);
-  aspect-ratio: 16 / 9;
+  /* Matches the ~2.2:1 shape of a full browser-window screenshot, so the
+     whole page fits in the frame instead of being cropped to fill it */
+  aspect-ratio: 2.2 / 1;
+  background: var(--placeholder-grad);
   transform: translateZ(24px); /* pops toward the viewer while tilting */
 }
 
 .project-media img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center top;
+  object-fit: contain;
   transition: transform 0.45s ease-out;
 }
 
+/* Gentle push-in only — a bigger zoom would crop the edges back off */
 .project-card:hover .project-media img {
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
 /* Placeholder with drifting grid + scanline sweep */
