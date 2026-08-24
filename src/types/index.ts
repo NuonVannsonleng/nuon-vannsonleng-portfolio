@@ -16,6 +16,10 @@ export type IconName =
   | 'mail'
   | 'external'
   | 'user'
+  | 'close'
+  | 'chevron-left'
+  | 'chevron-right'
+  | 'expand'
   | 'sun'
   | 'moon'
   | 'monitor';

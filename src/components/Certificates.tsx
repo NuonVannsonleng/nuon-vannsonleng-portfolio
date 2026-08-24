@@ -1,13 +1,21 @@
+import { useState } from 'react';
 import type { Certificate } from '../types';
 import { useTilt } from '../hooks/useTilt';
 import { Icon } from './icons';
+import { Lightbox, type LightboxSlide } from './Lightbox';
 import './Certificates.css';
 
 interface CertificateGridProps {
   certificates: Certificate[];
 }
 
-function CertificateCard({ certificate }: { certificate: Certificate }) {
+function CertificateCard({
+  certificate,
+  onOpen,
+}: {
+  certificate: Certificate;
+  onOpen?: () => void;
+}) {
   const { ref, onPointerMove, onPointerLeave } = useTilt<HTMLElement>(6);
 
   return (
@@ -19,19 +27,22 @@ function CertificateCard({ certificate }: { certificate: Certificate }) {
     >
       <span className="tilt-glare" aria-hidden="true" />
       {certificate.imageUrl && (
-        <a
+        <button
+          type="button"
           className="certificate-photo"
-          href={certificate.imageUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={`Open the full ${certificate.title} certificate image`}
+          onClick={onOpen}
+          aria-label={`View the ${certificate.title} certificate full size`}
         >
           <img
             src={certificate.imageUrl}
             alt={certificate.imageAlt ?? `${certificate.title} certificate`}
             loading="lazy"
           />
-        </a>
+          <span className="certificate-photo-cue" aria-hidden="true">
+            <Icon name="expand" size={15} />
+            View full size
+          </span>
+        </button>
       )}
       <span className="certificate-badge" aria-hidden="true">
         <Icon name="award" size={26} />
@@ -57,11 +68,40 @@ function CertificateCard({ certificate }: { certificate: Certificate }) {
 }
 
 export function CertificateGrid({ certificates }: CertificateGridProps) {
+  // Only the ones with a photo can be previewed, so the viewer walks that subset
+  const slides: LightboxSlide[] = certificates
+    .filter((certificate) => certificate.imageUrl)
+    .map((certificate) => ({
+      src: certificate.imageUrl as string,
+      alt: certificate.imageAlt ?? `${certificate.title} certificate`,
+      title: certificate.title,
+      subtitle: `${certificate.issuer} · ${certificate.date}`,
+    }));
+
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
   return (
     <div className="certificate-grid">
       {certificates.map((certificate) => (
-        <CertificateCard key={certificate.title} certificate={certificate} />
+        <CertificateCard
+          key={certificate.title}
+          certificate={certificate}
+          onOpen={
+            certificate.imageUrl
+              ? () => setOpenIndex(slides.findIndex((slide) => slide.title === certificate.title))
+              : undefined
+          }
+        />
       ))}
+
+      {openIndex !== null && (
+        <Lightbox
+          slides={slides}
+          index={openIndex}
+          onIndexChange={setOpenIndex}
+          onClose={() => setOpenIndex(null)}
+        />
+      )}
     </div>
   );
 }

@@ -118,6 +118,8 @@ ol {
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 90px;
+  /* Stops the iOS rubber-band that drags the fixed header off the top */
+  overscroll-behavior-y: none;
 }
 
 body {

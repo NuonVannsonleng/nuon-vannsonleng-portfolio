@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   z-index: 1500;
-  padding: 1.1rem 0;
+  padding: calc(1.1rem + env(safe-area-inset-top, 0px)) 0 1.1rem;
   transition:
     background-color var(--transition-base),
     border-color var(--transition-base),
@@ -13,7 +13,7 @@
 }
 
 .site-header.is-scrolled {
-  padding: 0.75rem 0;
+  padding: calc(0.75rem + env(safe-area-inset-top, 0px)) 0 0.75rem;
   background: var(--header-bg);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);

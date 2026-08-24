@@ -104,6 +104,26 @@ const paths: Record<IconName, JSX.Element> = {
       <line x1="10" y1="14" x2="21" y2="3" />
     </>
   ),
+  close: (
+    <>
+      <path d="M18 6 6 18M6 6l12 12" />
+    </>
+  ),
+  'chevron-left': (
+    <>
+      <polyline points="15 18 9 12 15 6" />
+    </>
+  ),
+  'chevron-right': (
+    <>
+      <polyline points="9 18 15 12 9 6" />
+    </>
+  ),
+  expand: (
+    <>
+      <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+    </>
+  ),
   sun: (
     <>
       <circle cx="12" cy="12" r="4" />

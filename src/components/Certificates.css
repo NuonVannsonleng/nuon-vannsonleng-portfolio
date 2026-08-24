@@ -24,9 +24,11 @@
     0 0 30px var(--glow-indigo);
 }
 
-/* Optional scan/photo of the certificate, clickable for the full size */
+/* Optional scan/photo of the certificate — opens the fullscreen viewer */
 .certificate-photo {
+  position: relative;
   display: block;
+  width: 100%;
   padding: 8px;
   margin-bottom: 1.25rem;
   aspect-ratio: 3 / 2;
@@ -34,6 +36,42 @@
   background: var(--placeholder-grad);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-md);
+  font-family: inherit;
+  cursor: zoom-in;
+  transition: border-color var(--transition-base);
+}
+
+.certificate-card:hover .certificate-photo {
+  border-color: var(--glass-border-hover);
+}
+
+/* Hint that slides up out of the bottom edge on hover */
+.certificate-photo-cue {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 8px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(to top, rgba(6, 18, 31, 0.92), rgba(6, 18, 31, 0.55));
+  border-radius: 0 0 8px 8px;
+  opacity: 0;
+  transform: translateY(100%);
+  transition:
+    opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.certificate-photo:hover .certificate-photo-cue,
+.certificate-photo:focus-visible .certificate-photo-cue {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .certificate-photo img {

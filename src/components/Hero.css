@@ -9,6 +9,18 @@
   padding: 130px 0 6vh;
 }
 
+/*
+ * When the content is taller than the viewport, `justify-content: center`
+ * overflows in BOTH directions — the top of the hero ends up above the
+ * padding and slides under the fixed header. Anchoring to the top keeps
+ * the header clear; the section still centres whenever it fits.
+ */
+@media (max-height: 900px), (max-width: 860px) {
+  .hero {
+    justify-content: flex-start;
+  }
+}
+
 /* Two columns: intro text left, photo right */
 .hero-inner {
   display: grid;
@@ -636,8 +648,9 @@
    ======================================== */
 @media (max-width: 860px) {
   .hero {
-    padding: 100px 0 4vh;
-    gap: 3rem;
+    /* Clears the fixed header plus the notch on phones that report one */
+    padding: calc(104px + env(safe-area-inset-top, 0px)) 0 4vh;
+    gap: 2.5rem;
   }
 
   .hero-inner {
