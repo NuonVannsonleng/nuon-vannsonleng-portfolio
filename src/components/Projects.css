@@ -151,6 +151,9 @@
 }
 
 .project-stack li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
   padding: 4px 12px;
   font-size: 0.76rem;
   font-weight: 500;

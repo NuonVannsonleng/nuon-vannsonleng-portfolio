@@ -1,6 +1,7 @@
 import type { Project } from '../types';
 import { useTilt } from '../hooks/useTilt';
 import { Icon } from './icons';
+import { TechIcon } from './TechIcon';
 import './Projects.css';
 
 interface ProjectGridProps {
@@ -48,7 +49,10 @@ function ProjectCard({ project }: { project: Project }) {
       <p className="project-description">{project.description}</p>
       <ul className="project-stack" role="list" aria-label="Technologies used">
         {project.stack.map((tech) => (
-          <li key={tech}>{tech}</li>
+          <li key={tech}>
+            <TechIcon name={tech} size={14} />
+            {tech}
+          </li>
         ))}
       </ul>
       {project.status && (

@@ -1,22 +1,32 @@
 import type { IconType } from 'react-icons';
 import {
   SiCss,
+  SiExpress,
+  SiFfmpeg,
   SiFigma,
+  SiFramer,
   SiGit,
   SiGithub,
   SiHtml5,
   SiJavascript,
   SiMysql,
+  SiNextdotjs,
   SiNodedotjs,
   SiPython,
   SiReact,
+  SiShadcnui,
+  SiSocketdotio,
+  SiTailwindcss,
   SiTypescript,
   SiVite,
 } from 'react-icons/si';
 
 interface TechIconDef {
   Icon: IconType;
-  /** Official brand color */
+  /**
+   * Official brand color, or 'currentColor' for brands whose mark is black
+   * (Next.js, Express, shadcn) — those would vanish on the dark theme.
+   */
   color: string;
 }
 
@@ -34,7 +44,19 @@ const techIcons: Record<string, TechIconDef> = {
   GitHub: { Icon: SiGithub, color: '#161b22' },
   Figma: { Icon: SiFigma, color: '#F24E1E' },
   Vite: { Icon: SiVite, color: '#646CFF' },
+  'Tailwind CSS': { Icon: SiTailwindcss, color: '#38BDF8' },
+  'Next.js': { Icon: SiNextdotjs, color: 'currentColor' },
+  Express: { Icon: SiExpress, color: 'currentColor' },
+  'shadcn/ui': { Icon: SiShadcnui, color: 'currentColor' },
+  FFmpeg: { Icon: SiFfmpeg, color: '#66CC33' },
+  'Socket.IO': { Icon: SiSocketdotio, color: '#61B0D0' },
+  'Framer Motion': { Icon: SiFramer, color: '#BB6BD9' },
 };
+
+/** 'Next.js 15' and 'Tailwind CSS 4' should find their unversioned entry */
+function lookup(name: string): TechIconDef | undefined {
+  return techIcons[name] ?? techIcons[name.replace(/\s+v?\d[\d.]*$/, '')];
+}
 
 interface TechIconProps {
   name: string;
@@ -43,7 +65,7 @@ interface TechIconProps {
 
 /** Brand logo for a skill; falls back to a gradient dot for unknown names. */
 export function TechIcon({ name, size = 18 }: TechIconProps) {
-  const def = techIcons[name];
+  const def = lookup(name);
   if (!def) {
     return <span className="skill-dot" aria-hidden="true" />;
   }
