@@ -14,10 +14,10 @@
 
 .site-header.is-scrolled {
   padding: 0.75rem 0;
-  background: rgba(247, 245, 239, 0.78);
+  background: var(--header-bg);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border-bottom-color: rgba(22, 58, 92, 0.1);
+  border-bottom-color: rgba(var(--tint), 0.1);
 }
 
 .nav {
@@ -37,10 +37,16 @@
   text-decoration: none;
 }
 
+/* Links and the theme switch group together on the right */
 .nav-links {
   display: flex;
+  margin-left: auto;
   list-style: none;
   gap: 2.25rem;
+}
+
+.nav > .theme-toggle {
+  margin-left: 1.75rem;
 }
 
 .nav-links a {
@@ -121,7 +127,7 @@
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    background: rgba(247, 245, 239, 0.97);
+    background: var(--overlay-bg);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
     opacity: 0;

@@ -29,7 +29,7 @@
   font-weight: 700;
   white-space: nowrap;
   color: transparent;
-  -webkit-text-stroke: 1px rgba(22, 58, 92, 0.28);
+  -webkit-text-stroke: 1px rgba(var(--tint), 0.28);
   transition: color var(--transition-base);
 }
 
@@ -72,10 +72,10 @@
   justify-content: center;
   gap: 1rem;
   padding: 2.1rem 1rem 1.6rem;
-  background: rgba(255, 255, 255, 0.92);
-  border: 1px solid rgba(22, 58, 92, 0.16);
+  background: var(--glass-solid);
+  border: 1px solid rgba(var(--tint), 0.16);
   border-radius: var(--radius-lg);
-  box-shadow: 0 4px 16px rgba(22, 58, 92, 0.07);
+  box-shadow: 0 4px 16px rgba(var(--ink), 0.07);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   overflow: hidden;
@@ -105,7 +105,7 @@
   transform: translateY(-8px);
   border-color: var(--glass-border-hover);
   box-shadow:
-    0 16px 40px rgba(22, 58, 92, 0.2),
+    0 16px 40px rgba(var(--ink), 0.2),
     0 0 26px var(--glow-indigo);
 }
 
@@ -117,7 +117,7 @@
   width: 110px;
   height: 110px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(244, 180, 0, 0.32), rgba(22, 58, 92, 0.1) 55%, transparent 70%);
+  background: radial-gradient(circle, rgba(244, 180, 0, 0.32), rgba(var(--tint), 0.1) 55%, transparent 70%);
   filter: blur(14px);
   opacity: 0.45;
   transform: scale(0.82);
@@ -136,7 +136,7 @@
   justify-content: center;
   height: 52px;
   transition: transform 0.35s cubic-bezier(0.34, 1.8, 0.4, 1);
-  filter: drop-shadow(0 4px 14px rgba(22, 58, 92, 0.22));
+  filter: drop-shadow(0 4px 14px rgba(var(--ink), 0.22));
 }
 
 .tech-card:hover .tech-card-icon {

@@ -85,7 +85,7 @@
 .timeline-content:hover {
   transform: translateY(-4px);
   border-color: var(--glass-border-hover);
-  box-shadow: 0 12px 36px rgba(22, 58, 92, 0.15), 0 0 20px var(--glow-indigo);
+  box-shadow: 0 12px 36px rgba(var(--ink), 0.15), 0 0 20px var(--glow-indigo);
 }
 
 .timeline-date {
@@ -95,7 +95,7 @@
   font-size: 0.78rem;
   font-weight: 600;
   color: var(--text-primary);
-  background: linear-gradient(100deg, rgba(22, 58, 92, 0.16), rgba(47, 102, 144, 0.16));
+  background: linear-gradient(100deg, rgba(var(--tint), 0.16), rgba(47, 102, 144, 0.16));
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-pill);
 }

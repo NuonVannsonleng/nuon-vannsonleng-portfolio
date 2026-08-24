@@ -1,0 +1,84 @@
+.theme-toggle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-pill);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition:
+    border-color var(--transition-fast),
+    background var(--transition-base);
+}
+
+.theme-toggle:hover {
+  border-color: var(--glass-border-hover);
+}
+
+/* The pill that slides under the active option */
+.theme-toggle-thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--gradient);
+  box-shadow: 0 4px 14px var(--glow-indigo);
+  transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.theme-toggle-btn {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition:
+    color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.theme-toggle-btn:hover {
+  color: var(--text-primary);
+  transform: scale(1.12);
+}
+
+.theme-toggle-btn.is-active {
+  color: var(--on-accent);
+}
+
+/* The sun spins a quarter turn as it takes over, the moon dips in */
+.theme-toggle-btn.is-active svg {
+  animation: theme-icon-pop 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes theme-icon-pop {
+  0% {
+    transform: rotate(-70deg) scale(0.6);
+    opacity: 0.3;
+  }
+  100% {
+    transform: rotate(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Once the links collapse behind the hamburger, hug the right edge */
+@media (max-width: 768px) {
+  .theme-toggle {
+    margin-left: auto;
+    margin-right: 0.75rem;
+  }
+}

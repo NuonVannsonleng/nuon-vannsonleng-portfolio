@@ -68,7 +68,7 @@
 }
 
 .hero-title .gradient-text {
-  filter: drop-shadow(0 0 28px rgba(22, 58, 92, 0.25));
+  filter: drop-shadow(0 0 28px rgba(var(--ink), 0.25));
 }
 
 .hero-tagline {
@@ -138,7 +138,7 @@
 }
 
 .hero-social-link:hover {
-  color: #fff;
+  color: var(--on-accent);
   background: var(--gradient);
   border-color: transparent;
   transform: translateY(-4px) scale(1.08);
@@ -519,6 +519,12 @@
   color: var(--card-text-dim);
 }
 
+/* On a dark page the card needs to sit above the background, not sink into it */
+:root[data-theme='dark'] .hero-card-float {
+  --card-bg: #16304c;
+  --card-bg-soft: #20456b;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-card-float {
     animation: none;
@@ -562,7 +568,7 @@
 .hero-stat-card:hover {
   transform: translateY(-6px);
   border-color: var(--glass-border-hover);
-  box-shadow: 0 16px 40px rgba(22, 58, 92, 0.16), 0 0 26px var(--glow-indigo);
+  box-shadow: 0 16px 40px rgba(var(--ink), 0.16), 0 0 26px var(--glow-indigo);
 }
 
 .hero-stat-top {
@@ -579,12 +585,12 @@
   height: 44px;
   border-radius: 50%;
   color: var(--indigo);
-  background: rgba(22, 58, 92, 0.08);
+  background: rgba(var(--tint), 0.08);
   transition: color var(--transition-base), background var(--transition-base);
 }
 
 .hero-stat-card:hover .hero-stat-icon {
-  color: #fff;
+  color: var(--on-accent);
   background: var(--gradient);
 }
 

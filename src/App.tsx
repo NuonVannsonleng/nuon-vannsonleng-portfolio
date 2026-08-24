@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTheme } from './hooks/useTheme';
 import { Background } from './components/Background';
 import { CursorGlow } from './components/CursorGlow';
 import { Loader } from './components/Loader';
@@ -27,6 +28,7 @@ import {
 
 export default function App() {
   const [loading, setLoading] = useState(true);
+  const { mode, resolved, setTheme } = useTheme();
 
   if (loading) {
     return <Loader name={siteMeta.name} onDone={() => setLoading(false)} />;
@@ -58,10 +60,15 @@ export default function App() {
       <a href="#main-content" className="skip-link">
         Skip to content
       </a>
-      <Background />
+      <Background theme={resolved} />
       <CursorGlow />
       <ScrollProgress />
-      <Header logoText={siteMeta.logoText} links={navLinks} />
+      <Header
+        logoText={siteMeta.logoText}
+        links={navLinks}
+        theme={mode}
+        onThemeChange={setTheme}
+      />
       <main id="main-content">
         <Hero
           greeting={siteMeta.heroGreeting}

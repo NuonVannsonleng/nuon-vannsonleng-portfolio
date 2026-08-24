@@ -1,14 +1,17 @@
 import { useEffect, useState } from 'react';
-import type { NavLink } from '../types';
+import type { NavLink, ThemeMode } from '../types';
 import { useScrollSpy } from '../hooks/useScrollSpy';
+import { ThemeToggle } from './ThemeToggle';
 import './Header.css';
 
 interface HeaderProps {
   logoText: string;
   links: NavLink[];
+  theme: ThemeMode;
+  onThemeChange: (mode: ThemeMode) => void;
 }
 
-export function Header({ logoText, links }: HeaderProps) {
+export function Header({ logoText, links, theme, onThemeChange }: HeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const activeId = useScrollSpy(links.map((link) => link.href.slice(1)));
@@ -54,6 +57,8 @@ export function Header({ logoText, links }: HeaderProps) {
             </li>
           ))}
         </ul>
+
+        <ThemeToggle mode={theme} onChange={onThemeChange} />
 
         <button
           type="button"

@@ -21,7 +21,7 @@
   font-family: var(--font-body);
   font-size: 1rem;
   color: var(--text-primary);
-  background: rgba(22, 58, 92, 0.045);
+  background: rgba(var(--tint), 0.045);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-md);
   transition:

@@ -18,6 +18,21 @@ function CertificateCard({ certificate }: { certificate: Certificate }) {
       onPointerLeave={onPointerLeave}
     >
       <span className="tilt-glare" aria-hidden="true" />
+      {certificate.imageUrl && (
+        <a
+          className="certificate-photo"
+          href={certificate.imageUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Open the full ${certificate.title} certificate image`}
+        >
+          <img
+            src={certificate.imageUrl}
+            alt={certificate.imageAlt ?? `${certificate.title} certificate`}
+            loading="lazy"
+          />
+        </a>
+      )}
       <span className="certificate-badge" aria-hidden="true">
         <Icon name="award" size={26} />
       </span>

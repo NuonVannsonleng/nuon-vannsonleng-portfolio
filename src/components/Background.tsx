@@ -13,7 +13,7 @@ interface Star {
  * interactive canvas starfield that drifts and parallaxes with the mouse.
  * Renders a single static frame when reduced motion is preferred.
  */
-export function Background() {
+export function Background({ theme }: { theme: 'light' | 'dark' }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -23,6 +23,10 @@ export function Background() {
     if (!ctx) return;
 
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // Stars are dark ink on the light theme and pale on the dark one
+    const starRgb =
+      getComputedStyle(document.documentElement).getPropertyValue('--star-rgb').trim() ||
+      '22, 58, 92';
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     let width = 0;
     let height = 0;
@@ -61,7 +65,7 @@ export function Background() {
         const size = 0.4 + s.z * 1.4;
         ctx.beginPath();
         ctx.arc(s.x + px, s.y + py, size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(22, 58, 92, ${Math.max(0.04, alpha)})`;
+        ctx.fillStyle = `rgba(${starRgb}, ${Math.max(0.04, alpha)})`;
         ctx.fill();
       }
     };
@@ -93,7 +97,7 @@ export function Background() {
       window.removeEventListener('resize', resize);
       window.removeEventListener('pointermove', onPointerMove);
     };
-  }, []);
+  }, [theme]);
 
   return (
     <div className="site-background" aria-hidden="true">

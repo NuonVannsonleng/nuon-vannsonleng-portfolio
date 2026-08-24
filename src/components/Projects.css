@@ -19,7 +19,7 @@
 .project-card:hover {
   border-color: var(--glass-border-hover);
   box-shadow:
-    0 18px 44px rgba(22, 58, 92, 0.16),
+    0 18px 44px rgba(var(--ink), 0.16),
     0 0 30px var(--glow-indigo);
 }
 
@@ -56,9 +56,9 @@
   font-size: 0.82rem;
   letter-spacing: 0.06em;
   background:
-    linear-gradient(rgba(22, 58, 92, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(22, 58, 92, 0.08) 1px, transparent 1px),
-    linear-gradient(160deg, #ffffff, #efece2);
+    linear-gradient(rgba(var(--tint), 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--tint), 0.08) 1px, transparent 1px),
+    var(--placeholder-grad);
   background-size: 22px 22px, 22px 22px, 100% 100%;
   overflow: hidden;
 }
@@ -68,7 +68,7 @@
   position: absolute;
   inset: -60% 0 auto;
   height: 55%;
-  background: linear-gradient(180deg, transparent, rgba(22, 58, 92, 0.1), transparent);
+  background: linear-gradient(180deg, transparent, rgba(var(--tint), 0.1), transparent);
   animation: scanline 4.5s ease-in-out infinite;
 }
 
@@ -110,7 +110,7 @@
   font-size: 0.76rem;
   font-weight: 500;
   color: var(--text-primary);
-  background: linear-gradient(100deg, rgba(22, 58, 92, 0.14), rgba(47, 102, 144, 0.14));
+  background: linear-gradient(100deg, rgba(var(--tint), 0.14), rgba(47, 102, 144, 0.14));
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-pill);
 }

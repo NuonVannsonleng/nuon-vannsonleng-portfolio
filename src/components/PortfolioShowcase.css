@@ -63,7 +63,7 @@
 }
 
 .showcase-tab.is-active {
-  color: #fff;
+  color: var(--on-accent);
 }
 
 .showcase-tab svg {

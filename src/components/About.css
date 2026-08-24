@@ -43,7 +43,7 @@
 .highlight-card:hover {
   transform: translateY(-5px);
   border-color: var(--glass-border-hover);
-  box-shadow: 0 14px 40px rgba(22, 58, 92, 0.15), 0 0 24px var(--glow-indigo);
+  box-shadow: 0 14px 40px rgba(var(--ink), 0.15), 0 0 24px var(--glow-indigo);
 }
 
 .highlight-card:hover::before {
@@ -58,7 +58,7 @@
   height: 52px;
   margin-bottom: 1.1rem;
   border-radius: 14px;
-  color: #fff;
+  color: var(--on-accent);
   background: linear-gradient(135deg, var(--indigo), var(--violet));
   border: 1px solid var(--glass-border);
   box-shadow: 0 0 18px var(--glow-indigo);

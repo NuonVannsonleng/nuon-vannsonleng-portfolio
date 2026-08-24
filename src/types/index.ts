@@ -15,7 +15,13 @@ export type IconName =
   | 'telegram'
   | 'mail'
   | 'external'
-  | 'user';
+  | 'user'
+  | 'sun'
+  | 'moon'
+  | 'monitor';
+
+/** What the user picked in the theme switch — 'system' follows the OS */
+export type ThemeMode = 'light' | 'dark' | 'system';
 
 export interface NavLink {
   label: string;
@@ -68,6 +74,9 @@ export interface Certificate {
   issuer: string;
   date: string;
   description: string;
+  /** Photo/scan of the certificate, served from `public/` */
+  imageUrl?: string;
+  imageAlt?: string;
   /** Omit if there's no public credential page yet */
   credentialUrl?: string;
 }
