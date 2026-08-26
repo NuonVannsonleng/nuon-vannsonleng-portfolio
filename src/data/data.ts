@@ -211,6 +211,16 @@ export const projects: Project[] = [
 /* Certificate photos live in `public/` alongside the project thumbnails. */
 export const certificates: Certificate[] = [
   {
+    title: 'Learn HTML and CSS from Beginning to Advanced',
+    issuer: 'Udemy · Marcus Menti and Zechariah Tech',
+    date: 'April 2025',
+    description:
+      'A five-hour course taking HTML and CSS from the fundamentals through to advanced layout and styling — semantic markup, the box model, flexbox and grid, and responsive design. It is the groundwork the front end of every project here is built on.',
+    imageUrl: '/certificate-3.jpg',
+    imageAlt: 'Udemy certificate of completion for Learn HTML and CSS from Beginning to Advanced',
+    credentialUrl: 'https://www.udemy.com/certificate/UC-9a681893-f787-4715-87e6-8e34ab07bc70/',
+  },
+  {
     title: 'Angkor Sangkranta 2025 — Volunteer',
     issuer: 'Union of Youth Federations of Cambodia',
     date: 'April 2025',
