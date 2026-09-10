@@ -206,6 +206,50 @@ export const projects: Project[] = [
     demoUrl: 'https://still-here-for-you.vercel.app',
     repoUrl: 'https://github.com/NuonVannsonleng/Still-Here-For-You-',
   },
+  {
+    title: 'Nike Store — Front-End Clone',
+    description:
+      'A study rebuild of the Nike storefront: the utility bar, navigation across New & Featured, Men, Women, Kids and Sale, a full-bleed campaign hero, product grids and a live cart counter. It is front-end only — everything runs on local mock data, with no backend, checkout or accounts behind it yet. Built with Vitest and Playwright accessibility checks wired in from the start.',
+    stack: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
+    status: 'In development',
+    imageUrl: '/Nike.png',
+    imageAlt: 'Nike clone homepage with the Engineered For Every Move campaign hero',
+    demoUrl: 'https://nike-clone-three-wine.vercel.app',
+    repoUrl: 'https://github.com/NuonVannsonleng/Nike-Clone',
+  },
+  {
+    title: 'Starbucks — Front-End Clone',
+    description:
+      'A study rebuild of the Starbucks homepage — menu, rewards and gift-card navigation, the split green campaign hero, and the store-finder and sign-in entry points. The page says so itself: no payment, account or live store data is involved. It is the interface only; the backend is still ahead.',
+    stack: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
+    status: 'In development',
+    imageUrl: '/Starbucks.png',
+    imageAlt: 'Starbucks clone homepage with the Refresh your day hero',
+    demoUrl: 'https://starbucks-clone-two-gold.vercel.app',
+    repoUrl: 'https://github.com/NuonVannsonleng/Starbucks-Clone',
+  },
+  {
+    title: "McDonald's — Front-End Clone",
+    description:
+      "A study rebuild of the McDonald's homepage: menu, deals and rewards navigation, the Good Food Good Mood campaign hero, and the quick-action row for ordering, finding a restaurant, browsing the menu and catching deals. A demo project — no real orders, payments or offers, and no backend wired up yet.",
+    stack: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
+    status: 'In development',
+    imageUrl: '/McDonald.png',
+    imageAlt: "McDonald's clone homepage with the Good food Good mood hero",
+    demoUrl: 'https://mc-donald-s-clone-nine.vercel.app',
+    repoUrl: 'https://github.com/NuonVannsonleng/McDonald-s-Clone',
+  },
+  {
+    title: 'Nexora — Premium Tech Storefront',
+    description:
+      'An original storefront rather than a clone: one shop covering laptops, phones, tablets, watches, audio, gaming and accessories, with product cards and pricing, search, a wishlist and a cart, routed across pages with React Router. The catalogue is local data for now — the backend and checkout are the next piece, and the build ships with unit and accessibility tests.',
+    stack: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
+    status: 'In development',
+    imageUrl: '/Nexora.png',
+    imageAlt: 'Nexora tech storefront homepage with The next era of technology hero',
+    demoUrl: 'https://nexora-wheat-beta.vercel.app',
+    repoUrl: 'https://github.com/NuonVannsonleng/Nexora',
+  },
 ];
 
 /* Certificate photos live in `public/` alongside the project thumbnails. */
