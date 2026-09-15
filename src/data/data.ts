@@ -287,8 +287,8 @@ export const certificates: Certificate[] = [
 export const socialLinks: SocialLink[] = [
   { label: 'GitHub', url: 'https://github.com/NuonVannsonleng', icon: 'github' },
   { label: 'LinkedIn', url: 'https://linkedin.com/in/nuon-vannsonleng-708006422', icon: 'linkedin' },
-  { label: 'Facebook', url: 'https://www.facebook.com/NuonVannsonleng226', icon: 'facebook' },
-  { label: 'Instagram', url: 'https://www.instagram.com/pjayzkk/', icon: 'instagram' },
-  { label: 'Telegram', url: 'https://t.me/Nuon_Vannsonleng', icon: 'telegram' },
+  { label: 'Facebook', url: 'https://www.facebook.com/jay.lhwa', icon: 'facebook' },
+  { label: 'Instagram', url: 'https://www.instagram.com/j.lhwa/', icon: 'instagram' },
+  { label: 'Telegram', url: 'https://t.me/j_lhwa', icon: 'telegram' },
   { label: 'Email', url: `mailto:${siteMeta.email}`, icon: 'mail' },
 ];
