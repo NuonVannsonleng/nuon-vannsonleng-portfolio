@@ -200,7 +200,7 @@ export function Hero({
             <div className="btn-split">
               <a
                 href={portfolioUrl}
-                className="btn btn-secondary"
+                className="btn"
                 download="Nuon Vannsonleng - Portfolio.pdf"
               >
                 <Icon name="file" size={16} />
@@ -208,7 +208,7 @@ export function Hero({
               </a>
               <a
                 href={canvaUrl}
-                className="btn btn-secondary"
+                className="btn"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="View the portfolio presentation on Canva"

@@ -120,33 +120,68 @@
 
 /*
  * One pill split in two: the same portfolio as a file on the left and as a
- * live Canva deck on the right. The halves share a single seam, and neither
- * lifts on hover the way a lone .btn does — that would break the seam.
+ * live Canva deck on the right. The gradient lives on the container so it
+ * runs unbroken across both halves — giving each half its own would restart
+ * it at the seam and read as two separate buttons pushed together.
  */
 .btn-split {
+  position: relative;
   display: inline-flex;
+  overflow: hidden;
+  background: var(--gradient);
+  background-size: 160% 100%;
+  border-radius: var(--radius-pill);
+  transition:
+    background-position var(--transition-base),
+    transform var(--transition-fast),
+    box-shadow var(--transition-base);
 }
 
+.btn-split:hover {
+  background-position: 100% 0;
+  transform: translateY(-2px);
+  box-shadow:
+    0 8px 30px var(--glow-indigo),
+    0 2px 12px var(--glow-violet);
+}
+
+/* One sheen crossing the whole pill, rather than one trapped in each half */
+.btn-split::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  /* Without this the overlay would swallow clicks meant for the links */
+  pointer-events: none;
+  background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.35) 50%, transparent 60%);
+  transform: translateX(-120%);
+  transition: transform 0.6s ease;
+}
+
+.btn-split:hover::after {
+  transform: translateX(120%);
+}
+
+/* The halves sit transparent on the shared gradient; the container moves, not them */
 .btn-split .btn {
+  background: none;
+  border: none;
   border-radius: 0;
+  box-shadow: none;
   transform: none;
 }
 
+.btn-split .btn::after {
+  display: none;
+}
+
+/* A wash over just the hovered half, so it is clear which one will open */
 .btn-split .btn:hover {
   transform: none;
-  background: rgba(var(--tint), 0.11);
-}
-
-.btn-split > :first-child {
-  border-start-start-radius: var(--radius-pill);
-  border-end-start-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.14);
 }
 
 .btn-split > :last-child {
-  border-start-end-radius: var(--radius-pill);
-  border-end-end-radius: var(--radius-pill);
-  /* The first child's right border is the seam; a second would double it */
-  border-left: none;
+  border-left: 1px solid rgba(255, 255, 255, 0.28);
   padding-inline: 22px;
 }
 
