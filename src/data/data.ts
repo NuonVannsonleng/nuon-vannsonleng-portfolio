@@ -31,6 +31,14 @@ export const siteMeta = {
    * `public/cv.pdf` (same convention as profileImage above).
    */
   cvUrl: '/cv.pdf',
+  /** The Canva portfolio exported to PDF, served from `public/` */
+  portfolioUrl: '/portfolio.pdf',
+  /**
+   * The same portfolio as a live Canva deck. Must be a `/view` link —
+   * the short canva.link share URL redirects to `/edit`, which would let
+   * visitors change the design and shows non-Canva users a login wall.
+   */
+  canvaUrl: 'https://www.canva.com/design/DAHPbBfkELk/mY1YSb93zAobdpEw2AQxeQ/view',
 };
 
 /**

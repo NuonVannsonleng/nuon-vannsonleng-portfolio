@@ -118,6 +118,38 @@
   gap: 1rem;
 }
 
+/*
+ * One pill split in two: the same portfolio as a file on the left and as a
+ * live Canva deck on the right. The halves share a single seam, and neither
+ * lifts on hover the way a lone .btn does — that would break the seam.
+ */
+.btn-split {
+  display: inline-flex;
+}
+
+.btn-split .btn {
+  border-radius: 0;
+  transform: none;
+}
+
+.btn-split .btn:hover {
+  transform: none;
+  background: rgba(var(--tint), 0.11);
+}
+
+.btn-split > :first-child {
+  border-start-start-radius: var(--radius-pill);
+  border-end-start-radius: var(--radius-pill);
+}
+
+.btn-split > :last-child {
+  border-start-end-radius: var(--radius-pill);
+  border-end-end-radius: var(--radius-pill);
+  /* The first child's right border is the seam; a second would double it */
+  border-left: none;
+  padding-inline: 22px;
+}
+
 /* ========================================
    Social icon row
    ======================================== */

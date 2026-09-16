@@ -26,6 +26,10 @@ interface HeroProps {
   stats: HeroStat[];
   /** Path to the downloadable CV/résumé file */
   cvUrl: string;
+  /** Path to the Canva portfolio PDF */
+  portfolioUrl: string;
+  /** Public Canva view link for the same portfolio */
+  canvaUrl: string;
 }
 
 const CV_FILENAME = 'NuonVannsonleng CV.pdf';
@@ -150,6 +154,8 @@ export function Hero({
   socialLinks,
   stats,
   cvUrl,
+  portfolioUrl,
+  canvaUrl,
 }: HeroProps) {
   const typedText = useTypingEffect(typingPhrases);
 
@@ -185,6 +191,33 @@ export function Hero({
               <Icon name="file" size={16} />
               Download CV
             </a>
+            {/*
+              The portfolio PDF is ~28MB, so this is a plain download anchor
+              rather than the blob fetch the CV uses: the browser streams it
+              with its own progress, instead of the page sitting silent while
+              the whole file is pulled into memory first.
+            */}
+            <div className="btn-split">
+              <a
+                href={portfolioUrl}
+                className="btn btn-secondary"
+                download="Nuon Vannsonleng - Portfolio.pdf"
+              >
+                <Icon name="file" size={16} />
+                Portfolio PDF
+              </a>
+              <a
+                href={canvaUrl}
+                className="btn btn-secondary"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="View the portfolio presentation on Canva"
+              >
+                <Icon name="external" size={16} />
+                Canva
+              </a>
+            </div>
+
             <a href="#projects" className="btn btn-secondary">
               View Projects
             </a>

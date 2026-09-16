@@ -80,6 +80,8 @@ export default function App() {
           socialLinks={socialLinks}
           stats={heroStats}
           cvUrl={siteMeta.cvUrl}
+          portfolioUrl={siteMeta.portfolioUrl}
+          canvaUrl={siteMeta.canvaUrl}
         />
         <About intro={aboutIntro} highlights={highlights} />
         <Experience entries={timelineEntries} />
