@@ -217,10 +217,6 @@ export function Hero({
                 Canva
               </a>
             </div>
-
-            <a href="#projects" className="btn btn-secondary">
-              View Projects
-            </a>
           </div>
 
           <ul className="hero-socials fade-in fade-in-delay-3" aria-label="Social links">
