@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from 'react';
+import { supabase } from '../lib/supabase';
 import type { SocialLink } from '../types';
 import { Icon } from './icons';
 import { Section } from './Section';
@@ -15,7 +16,7 @@ interface FormValues {
 }
 
 type FormErrors = Partial<Record<keyof FormValues, string>>;
-type SubmitStatus = 'idle' | 'success';
+type SubmitStatus = 'idle' | 'sending' | 'success' | 'error';
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -37,6 +38,8 @@ export function Contact({ socialLinks }: ContactProps) {
   const [values, setValues] = useState<FormValues>({ name: '', email: '', message: '' });
   const [errors, setErrors] = useState<FormErrors>({});
   const [status, setStatus] = useState<SubmitStatus>('idle');
+  // Honeypot: hidden from people, but naive bots fill every field
+  const [website, setWebsite] = useState('');
 
   const handleChange = (field: keyof FormValues) => (value: string) => {
     setValues((prev) => ({ ...prev, [field]: value }));
@@ -44,15 +47,41 @@ export function Contact({ socialLinks }: ContactProps) {
     if (errors[field]) setErrors((prev) => ({ ...prev, [field]: undefined }));
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (status === 'sending') return;
     const nextErrors = validate(values);
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0) {
       setStatus('idle');
       return;
     }
-    // Demo only — wire this to a real endpoint (e.g. Formspree, EmailJS) later
+
+    // Pretend success for bots so they don't retry
+    if (website) {
+      setStatus('success');
+      setValues({ name: '', email: '', message: '' });
+      return;
+    }
+
+    if (!supabase) {
+      console.error('Contact form: VITE_SUPABASE_URL / VITE_SUPABASE_PUBLISHABLE_KEY are not set.');
+      setStatus('error');
+      return;
+    }
+
+    setStatus('sending');
+    const { error } = await supabase.from('contact_messages').insert({
+      name: values.name.trim(),
+      email: values.email.trim(),
+      message: values.message.trim(),
+    });
+
+    if (error) {
+      console.error('Contact form:', error);
+      setStatus('error');
+      return;
+    }
     setStatus('success');
     setValues({ name: '', email: '', message: '' });
   };
@@ -120,13 +149,31 @@ export function Contact({ socialLinks }: ContactProps) {
           )}
         </div>
 
-        <button type="submit" className="btn">
-          Send Message
+        <div className="form-honeypot" aria-hidden="true">
+          <label htmlFor="contact-website">Website</label>
+          <input
+            id="contact-website"
+            type="text"
+            tabIndex={-1}
+            autoComplete="off"
+            value={website}
+            onChange={(e) => setWebsite(e.target.value)}
+          />
+        </div>
+
+        <button type="submit" className="btn" disabled={status === 'sending'}>
+          {status === 'sending' ? 'Sending…' : 'Send Message'}
         </button>
 
         {status === 'success' && (
           <p className="form-status success" role="status">
             Thank you for your message! I&apos;ll get back to you soon.
+          </p>
+        )}
+        {status === 'error' && (
+          <p className="form-status error" role="alert">
+            Sorry, your message couldn&apos;t be sent. Please try again, or reach me through
+            the links below.
           </p>
         )}
       </form>

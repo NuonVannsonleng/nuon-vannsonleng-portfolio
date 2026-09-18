@@ -63,6 +63,25 @@
   color: #15803d;
 }
 
+.form-status.error {
+  color: #dc2626;
+}
+
+.contact-form .btn:disabled {
+  cursor: progress;
+  opacity: 0.7;
+  transform: none;
+}
+
+/* Spam trap — kept out of view and out of the tab order */
+.form-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .social-links {
   display: flex;
   justify-content: center;
