@@ -2,8 +2,6 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.75rem;
-  /* Room for cards to tilt without clipping */
-  perspective: 1200px;
 }
 
 .project-card {
@@ -12,8 +10,23 @@
   flex-direction: column;
   padding: 1.4rem;
   transition:
+    transform 0.2s ease-out,
     border-color var(--transition-base),
     box-shadow var(--transition-base);
+}
+
+/* Project cards are much taller than they are wide, so the shared 900px
+   perspective makes the top edge flare out when tilted. Use a deeper
+   perspective and damp the forward/back (X) tilt for a gentle lean. */
+.project-card.tilt {
+  transform: perspective(2400px) rotateX(calc(var(--rx, 0deg) * 0.35))
+    rotateY(var(--ry, 0deg));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card.tilt {
+    transform: none;
+  }
 }
 
 .project-card:hover {
