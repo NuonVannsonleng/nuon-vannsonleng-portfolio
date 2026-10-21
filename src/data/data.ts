@@ -160,6 +160,17 @@ export const timelineEntries: TimelineEntry[] = [
  */
 export const projects: Project[] = [
   {
+    title: 'Meh Rean — Study-Sharing Community',
+    description:
+      'A place for students to share lecture notes, slides, past papers, videos and photos, where every note carries its own discussion, ratings and a private chat with its author. On top sits a BacII study space: past papers by year, track and subject, timed mock exams, a daily question with a streak, a mistake notebook that brings wrong answers back for review, and a photo-to-solution helper. AI-drafted solutions and quizzes are labelled as checked or not yet checked, and demo questions are never passed off as official exam ones. Works in Khmer and English.',
+    stack: ['React', 'TypeScript', 'Supabase', 'KaTeX'],
+    status: 'In development',
+    imageUrl: '/meh-rean.png',
+    imageAlt: 'Meh Rean logo — a stack of green books with a teal bookmark',
+    demoUrl: 'https://meh-rean.vercel.app',
+    repoUrl: 'https://github.com/NuonVannsonleng/Meh-Rean',
+  },
+  {
     title: 'RUPPER Connect — University Learning Portal',
     description:
       'A classroom management platform for RUPP with separate spaces for students and staff. Students get a dashboard, courses, assignments and quizzes, attendance, a gradebook and transcript, timetable and academic calendar, announcements and messaging; administrators get user management and course oversight on top. It also carries the unglamorous half — email and OAuth sign-in with password reset, role-guarded routes, global search, in-app document preview, avatar cropping and a light/dark theme.',
